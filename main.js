@@ -1,16 +1,16 @@
 const STORAGE_KEY = 'todos-app'
 const todoStorage = {
-  fetch: function() {
+  fetch () {
     const todos = JSON.parse(
       localStorage.getItem(STORAGE_KEY) || '[]'
     )
-    todos.forEach(function(todo, index) {
+    todos.forEach(function (todo, index) {
       todo.id = index
     })
     todoStorage.uid = todos.length
     return todos
   },
-  save: function(todos) {
+  save (todos) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
   }
 }
@@ -29,7 +29,7 @@ new Vue({
 
   watch: {
     todos: {
-      handler: function (todos) {
+      handler (todos) {
         todoStorage.save(todos)
       },
       deep: true
@@ -37,17 +37,17 @@ new Vue({
   },
 
   computed: {
-    filteredTodos: function () {
+    filteredTodos () {
       return this.todos.filter(function (el) {
         return this.filterState === 0 || this.filterState === el.state
       }, this)
     },
-    allLabels() {
+    allLabels () {
       return this.states.reduce(function (a, b) {
         return Object.assign(a, { [b.value]: b.label })
       }, {})
     },
-    allStates() {
+    allStates () {
       return this.states.reduce(function (a, b) {
         return Object.assign(a, { [b.value]: b.state })
       }, {})
@@ -55,7 +55,7 @@ new Vue({
   },
 
   methods: {
-    addTodo: function() {
+    addTodo () {
       const body = this.newTodo && this.newTodo.trim()
       if (!body) {
         return
@@ -67,10 +67,10 @@ new Vue({
       })
       this.newTodo = ''
     },
-    changeState: function (item) {
+    changeState (item) {
       item.state = item.state === 1 ? 2 : 1
     },
-    removeTodo: function (item) {
+    removeTodo (item) {
       const index = this.todos.indexOf(item)
       this.todos.splice(index, 1)
     }
