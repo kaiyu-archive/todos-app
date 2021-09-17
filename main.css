@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+#app {
+    max-width: 640px;
+    margin: 0 auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+thead th {
+    border-bottom: 2px solid #0099e4;
+    color: #0099e4;
+}
+th {
+    padding: 0 8px;
+    line-height: 40px;
+}
+thead th.state {
+    width: 100px;
+}
+thead th.delete {
+    width: 60px;
+}
+tbody td.delete, tbody td.state {
+    text-align: center;
+}
+tbody tr td,
+tbody tr th {
+    border-bottom: 1px solid #ccc;
+    transition: all 0.4s;
+}
+tbody tr.done td,
+tbody tr.done th {
+    background: #f8f8f8;
+}
+tbody tr:hover td,
+tbody tr:hover th {
+    background: #f4fbff;
+}
+input.edit {
+    width: 100%;
+}
+input.new {
+    width: 70%;
+}
+button {
+    border: none;
+    border-radius: 5px;
+    line-height: 30px;
+    margin: 0 5px;
+    padding: 0 10px;
+    color: #fff;
+    cursor: pointer;
+}
+button.working,
+button.add {
+    background: #0099e4;
+}
+button.completed {
+    background: gray;
+}
+button.delete {
+    background: tomato;
+}

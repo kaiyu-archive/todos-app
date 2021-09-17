@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Todos-App</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+<div id="app">
+    <label v-for="state in states" v-bind:key="state.value">
+        <input type="radio"
+               v-model="filterState"
+               v-bind:value="state.value">{{ state.label }}
+    </label>
+
+    （{{ filteredTodos.length }} / {{ todos.length }} 件を表示）
+
+    <table>
+        <thead v-pre>
+        <tr>
+            <th class="body">内容</th>
+            <th class="state">状態</th>
+            <th class="delete"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="todo in filteredTodos"
+                v-bind:key="todo.id">
+                <td><input class="edit" type="text" v-model="todo.body"></td>
+                <td class="state">
+                    <button v-bind:class='allStates[todo.state]' v-on:click="changeState(todo)">
+                        {{ allLabels[todo.state] }}
+                    </button>
+                </td>
+                <td class="delete">
+                    <button class="delete" v-on:click="removeTodo(todo)">
+                        削除
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>新しいToDo</h2>
+    <form class="add-form" v-on:submit.prevent="addTodo">
+        コメント <input class="new" type="text" v-model="newTodo">
+        <button class="add" type="submit">追加</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="./main.js"></script>
+</body>
+</html>
