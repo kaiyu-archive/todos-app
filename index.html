@@ -24,22 +24,20 @@
         </tr>
         </thead>
         <tbody>
-
-        <tr
-                v-for="todo in filteredTodos"
+            <tr v-for="todo in filteredTodos"
                 v-bind:key="todo.id">
-            <td><input class="edit" type="text" v-model="todo.body"></td>
-            <td class="state">
-                <button v-bind:class='allStates[todo.state]' v-on:click="changeState(todo)">
-                    {{ allLabels[todo.state] }}
-                </button>
-            </td>
-            <td class="delete">
-                <button class="delete" v-on:click="removeTodo(todo)">
-                    削除
-                </button>
-            </td>
-        </tr>
+                <td><input class="edit" type="text" v-model="todo.body"></td>
+                <td class="state">
+                    <button v-bind:class='allStates[todo.state]' v-on:click="changeState(todo)">
+                        {{ allLabels[todo.state] }}
+                    </button>
+                </td>
+                <td class="delete">
+                    <button class="delete" v-on:click="removeTodo(todo)">
+                        削除
+                    </button>
+                </td>
+            </tr>
         </tbody>
     </table>
 
